@@ -23,8 +23,8 @@ private const val PURITY_FACTOR_22_Karat = 0.92
 class ScanItemViewModel : ViewModel() {
 
     private val lookupTable = listOf(
-        LookupEntryForWastageAndMakingCharge(0.0, PURITY_FACTOR_24_Karat, 0, { 0.39 }, { 1200.0 }),
-        LookupEntryForWastageAndMakingCharge(PURITY_FACTOR_24_Karat, 2.0, 0, { 0.65 }, { 1500.0 }),
+        LookupEntryForWastageAndMakingCharge(0.0, 1.0, 0, { 0.39 }, { 1200.0 }),
+        LookupEntryForWastageAndMakingCharge(1.0, 2.0, 0, { 0.65 }, { 1500.0 }),
         LookupEntryForWastageAndMakingCharge(2.0, 3.0, 0, { 0.70 }, { 1700.0 }),
         LookupEntryForWastageAndMakingCharge(3.0, 4.0, 0, { 0.75 }, { 1800.0 }),
         LookupEntryForWastageAndMakingCharge(4.0, 6.0, 0, { 0.95 }, { 2200.0 }),
