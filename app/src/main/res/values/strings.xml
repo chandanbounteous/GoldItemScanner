@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">GoldItemScanner</string>
+    <string name="title_gold_rate">Gold Rate</string>
+    <string name="title_scan_item">Scan Item</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="getting">Fetching …</string>
+    <string name="scan_item">Scan Item</string>
+    <string name="article_karat">Article Karat</string>
+    <string name="net_weight">Net Weight</string>
+    <string name="wastage">Wastage (in gms.)</string>
+    <string name="making_charge">Making Charge</string>
+    <string name="luxury_tax_2">Luxury Tax (2%)</string>
+    <string name="approx_final_amount">Approx Final Amount</string>
+    <string name="gold_rate_24_k_1_tola">Gold Rate (24 K) 1 tola</string>
+    <string name="enter_wastage_percentage">Wastage in grams</string>
+    <string name="enter_making_charge">Enter making charge</string>
+</resources>

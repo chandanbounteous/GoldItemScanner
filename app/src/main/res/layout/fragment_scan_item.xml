@@ -1,0 +1,204 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.dashboard.ScanItemFragment">
+
+    <!-- Row 1 -->
+    <TextView
+        android:id="@+id/labelGoldRate24K"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/gold_rate_24_k_1_tola"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tvGoldRate24K"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="96dp" />
+
+    <TextView
+        android:id="@+id/tvGoldRate24K"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/darker_gray"
+        android:padding="8dp"
+        android:focusable="false"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintStart_toEndOf="@+id/labelGoldRate24K"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/labelGoldRate24K" />
+
+    <!-- Row 2 -->
+    <TextView
+        android:id="@+id/labelArticleKarat"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/article_karat"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/dropdownArticleKarat"
+        app:layout_constraintTop_toBottomOf="@+id/labelGoldRate24K"
+        android:layout_marginTop="32dp"  />
+
+    <Spinner
+        android:id="@+id/dropdownArticleKarat"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:entries="@array/article_karat_options"
+        android:minHeight="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/labelArticleKarat"
+        app:layout_constraintTop_toTopOf="@+id/labelArticleKarat" />
+
+    <!-- Row 3 -->
+    <TextView
+        android:id="@+id/labelNetWeight"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/net_weight"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tvNetWeight"
+        app:layout_constraintTop_toBottomOf="@+id/labelArticleKarat"
+        android:layout_marginTop="32dp"  />
+
+    <TextView
+        android:id="@+id/tvNetWeight"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/darker_gray"
+        android:padding="8dp"
+        android:focusable="false"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintStart_toEndOf="@+id/labelNetWeight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/labelNetWeight" />
+
+    <!-- Row 4 -->
+    <TextView
+        android:id="@+id/labelWastage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/wastage"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tvWastage"
+        app:layout_constraintTop_toBottomOf="@+id/labelNetWeight"
+        android:layout_marginTop="32dp"  />
+
+    <EditText
+        android:id="@+id/tvWastage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/darker_gray"
+        android:padding="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:inputType="numberDecimal"
+        android:labelFor="@+id/labelWastage"
+        android:autofillHints="wastage"
+        android:hint="@string/enter_wastage_percentage"
+        app:layout_constraintStart_toEndOf="@+id/labelWastage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/labelWastage" />
+
+    <!-- Row 5 -->
+    <TextView
+        android:id="@+id/labelMakingCharge"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/making_charge"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tvMakingCharge"
+        app:layout_constraintTop_toBottomOf="@+id/labelWastage"
+        android:layout_marginTop="32dp"  />
+
+    <EditText
+        android:id="@+id/tvMakingCharge"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/darker_gray"
+        android:padding="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:inputType="numberDecimal"
+        android:labelFor="@+id/labelMakingCharge"
+        android:autofillHints="making charge"
+        android:hint="@string/enter_making_charge"
+        app:layout_constraintStart_toEndOf="@+id/labelMakingCharge"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/labelMakingCharge" />
+
+    <!-- Row 6 -->
+    <TextView
+        android:id="@+id/labelLuxuryTax"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/luxury_tax_2"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tvLuxuryTax"
+        app:layout_constraintTop_toBottomOf="@+id/labelMakingCharge"
+        android:layout_marginTop="32dp"  />
+
+    <TextView
+        android:id="@+id/tvLuxuryTax"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/darker_gray"
+        android:padding="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintStart_toEndOf="@+id/labelLuxuryTax"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/labelLuxuryTax" />
+
+    <!-- Row 7 -->
+    <TextView
+        android:id="@+id/labelFinalAmount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/approx_final_amount"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tvApproxFinalAmount"
+        app:layout_constraintTop_toBottomOf="@+id/labelLuxuryTax"
+        android:layout_marginTop="32dp"  />
+
+    <TextView
+        android:id="@+id/tvApproxFinalAmount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/darker_gray"
+        android:padding="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintStart_toEndOf="@+id/labelFinalAmount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/labelFinalAmount" />
+
+    <!-- Row 8 -->
+    <Button
+        android:id="@+id/btnScanItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/scan_item"
+        app:layout_constraintTop_toBottomOf="@+id/tvApproxFinalAmount"
+        android:layout_marginTop="32dp" 
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

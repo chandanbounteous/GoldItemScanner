@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.kanishk.golditemscanner.ui.home.GoldRateFragment"
+        android:label="@string/title_gold_rate"
+        tools:layout="@layout/fragment_gold_rate" />
+
+    <fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="com.kanishk.golditemscanner.ui.dashboard.ScanItemFragment"
+        android:label="@string/title_scan_item"
+        tools:layout="@layout/fragment_scan_item" />
+
+    <fragment
+        android:id="@+id/navigation_notifications"
+        android:name="com.kanishk.golditemscanner.ui.notifications.NotificationsFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_notifications" />
+</navigation>
