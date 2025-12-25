@@ -2,11 +2,16 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.compose.compiler)
+    id 'kotlin-kapt'
 }
 
 android {
     namespace 'com.kanishk.golditemscanner'
     compileSdk 35
+
+    buildFeatures {
+        dataBinding true
+    }
 
     defaultConfig {
         applicationId "com.kanishk.golditemscanner"

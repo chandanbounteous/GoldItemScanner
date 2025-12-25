@@ -10,11 +10,15 @@ import androidx.exifinterface.media.ExifInterface
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
@@ -22,6 +26,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.google.mlkit.vision.common.InputImage
@@ -55,8 +60,11 @@ class ScanItemFragment : Fragment() {
 
         _binding = FragmentScanItemBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.viewModel = scanItemViewModel
 
         val btnScanItem: Button = binding.btnScanItem
+
         btnScanItem.setOnClickListener {
             showImageSourceDialog()
         }
@@ -74,12 +82,23 @@ class ScanItemFragment : Fragment() {
             binding.tvNetWeight.text = netWeight.toString()
         }
 
-        scanItemViewModel.wastage.observe(viewLifecycleOwner) { wastage ->
-            binding.tvWastage.setText(wastage.toString())
+        // Handle makingCharge EditText manually for proper user input detection
+        scanItemViewModel.makingCharge.observe(viewLifecycleOwner) { makingChargeValue ->
+            if (binding.tvMakingCharge.text.toString() != makingChargeValue.toString()) {
+                binding.tvMakingCharge.setText(makingChargeValue.toString())
+            }
         }
-
-        scanItemViewModel.makingCharge.observe(viewLifecycleOwner) { makingCharge ->
-            binding.tvMakingCharge.setText(makingCharge.toString())
+        
+        // Add text watcher for makingCharge to trigger recalculation when user manually edits
+        binding.tvMakingCharge.doAfterTextChanged { text ->
+            val enteredValue = text.toString().toDoubleOrNull() ?: 0.0
+            // Update the ViewModel only if the value actually changed
+            if (scanItemViewModel.makingCharge.value != enteredValue) {
+                scanItemViewModel.makingCharge.value = enteredValue
+                // Don't pass isMakingChargeChanged=true when user manually enters a value
+                // We want to use their input, not recalculate it
+                scanItemViewModel.recalculateApproxTotalAmount(true)
+            }
         }
 
         scanItemViewModel.luxuryTax.observe(viewLifecycleOwner) { luxuryTax ->
@@ -88,6 +107,24 @@ class ScanItemFragment : Fragment() {
 
         scanItemViewModel.approxTotalAmount.observe(viewLifecycleOwner) { approxTotalAmount ->
             binding.tvApproxFinalAmount.text = approxTotalAmount.toString()
+        }
+
+        // Handle wastage EditText manually for proper user input detection
+        scanItemViewModel.wastage.observe(viewLifecycleOwner) { wastageValue ->
+            if (binding.tvWastage.text.toString() != wastageValue.toString()) {
+                binding.tvWastage.setText(wastageValue.toString())
+            }
+        }
+        
+        // Add text watcher for wastage to trigger recalculation when user manually edits
+        binding.tvWastage.doAfterTextChanged { text ->
+            val enteredValue = text.toString().toDoubleOrNull() ?: 0.0
+            // Update the ViewModel only if the value actually changed
+            if (scanItemViewModel.wastage.value != enteredValue) {
+                scanItemViewModel.wastage.value = enteredValue
+                // When wastage changes, we should recalculate making charge since it affects total weight
+                scanItemViewModel.recalculateApproxTotalAmount()
+            }
         }
 
         return root

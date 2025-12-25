@@ -3,8 +3,7 @@ package com.kanishk.golditemscanner.utils
 import com.kanishk.golditemscanner.models.RateDate
 import dev.shivathapaa.nepalidatepickerkmp.calendar_model.NepaliDateConverter
 import dev.shivathapaa.nepalidatepickerkmp.data.SimpleDate
-
-
+import kotlin.math.pow
 
 
 class Utils {
@@ -24,6 +23,10 @@ class Utils {
 
         fun getTodayNepaliDate(): SimpleDate {
             return NepaliDateConverter.todayNepaliSimpleDate
+        }
+
+        fun roundToTwoDecimalPlaces(value: Double, decimalPlace: Int): Double {
+            return kotlin.math.round(value * 10.0.pow(decimalPlace)) / 10.0.pow(decimalPlace)
         }
     }
 }
